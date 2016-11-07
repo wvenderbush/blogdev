@@ -1,0 +1,70 @@
+{% extends "index.html" %}
+
+{% block accountact %}class="active"{% endblock %}
+
+{% block content %}
+
+	{% if user == 'username'%}
+
+	<center>
+	<h2>Welcome to Your Account</h2>
+		{{message}}
+	<a class = "button special" href="#jump"> Change Password </a>
+	</center>
+	<br>
+
+	<center>
+		<h3> Your Stories </h3>
+   		{%for key in userstories%}
+
+   		<a href="/story/{{key}}/{{userstories[key]}}">
+                	<div class="libstory_wrapper">
+                		{{userstories[key]}}
+                	</div>
+                </a>
+                
+                <br>
+		{%endfor%}
+
+		<br>
+		<br>
+		<hr>
+		<br>
+		<a name="jump"></a>
+		Change your Password:
+		<br>
+		<div class="6u (xsmall)">
+		<form action = "/account/" method = "POST">
+ 		  <br>
+  		  Old Password: <br>
+ 		  <input type = "password" name = "oldpass"><br>
+ 		  New Password: <br>
+ 		  <input type = "password" name = "newpass"><br>
+ 		  <input type="submit" name = "changepass" value = "Change Password">
+ 		  </div>
+	</center>
+
+	{% endif %}
+
+	{% if user != 'username' %}
+	<center>
+	<h2> {{user}}'s Account </h2>
+
+		<h3> Their Stories </h3>
+   		{%for key in userstories%}
+   		<a href="/story/{{key}}/{{userstories[key]}}">
+                	<div class="libstory_wrapper">
+                		{{userstories[key]}}
+                	</div>
+                </a>
+                
+                <br>
+		{%endfor%}
+
+	</center>
+
+	{% endif %}
+
+
+
+{% endblock %}

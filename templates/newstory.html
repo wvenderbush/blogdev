@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% block title %}New Story{% endblock %}
+
+{% block content %}
+
+	<center>
+	<h3> Start a New Story </h3>
+	<div class="6u (xsmall)">
+	{{message}}
+	<br>
+
+	<form action = "/newstory/" method = "POST">
+		<b>Title</b><br>
+		<input type="text" name="title"><br>
+		<br>
+		<b>Story</b><br>
+<textarea name="story"  maxlength="650" rows="10" cols="60">
+{{content}}
+</textarea>
+		<br>
+		<input type="submit" name = "newstory">
+	</form>
+	</div>
+	</center>
+
+{% endblock %}

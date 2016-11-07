@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+
+{% block title %}Library{% endblock %}
+
+{% block libact %}class="active"{% endblock %}
+
+{% block content %}
+
+	<center>
+	<h2>Welcome to the Library</h2>
+		<b>See all the finished stories in one place!</b>
+		<hr>
+	<b>Sort By</b>
+	<section>
+    <div id="one">
+    <form action = "/library/alpha" method = "POST">
+	    <input type="submit" name = "sort" value = "Alphabetical">
+	</form>
+    </div>
+    <div id="two">
+    <form action = "/library/time" method = "POST">
+	    <input type="submit" name = "sort" value = "Date/Time">
+	</form>	 
+    </div>
+	</section>
+	
+	
+	
+	</center>
+	{% if mode == 0 %}
+				<br>
+                <br>
+                <center>
+                <h3> Stories </h3>
+                {%for story in stories%}
+                
+                <a href="/story/{{story[0]}}/{{story[1]}}">
+                	<div class="libstory_wrapper">
+                		{{story[1]}}
+                	</div>
+                </a>
+                
+                <br>
+                
+                {%endfor%}
+                </center>
+	{% endif %}
+	{% if mode != 0 %}
+				<br>
+                <br>
+                <center>
+                <h3> Stories </h3>
+                {%for story in stories%}
+                <a href="/story/{{story[0]}}/{{story[1]}}">
+                	<div class="libstory_wrapper">
+                		{{story[1]}}
+                	</div>
+                </a>
+                
+                <br>
+          
+                {%endfor%}
+                </center>
+	{% endif %}
+
+{% endblock %}

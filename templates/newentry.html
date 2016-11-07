@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+{% block title %}New Entry{% endblock %}
+
+{% block content %}
+
+{% if 'username' in session%}
+<center>
+<div class="6u (xsmall)">
+<h3>{{story}}</h3>
+
+
+<form action = "/newentry/{{id}}/{{story}}/" method = "POST">
+<i>{{content}}</i>
+<br>
+<br>
+{{stats}}
+<br>
+<br>
+<textarea name="entry"  maxlength="650" rows="10" cols="60">
+</textarea>
+  <br>
+  <input type="submit" value = "Submit Addition" name = "{{story}}">
+</form>
+</div>
+</center>
+{% endif %}
+
+{% if numentries == 10 %}
+<center>
+<br>
+<h4>This will be the final contribution to this story!</h4>
+</center>
+{% endif %}
+
+{% endblock %}

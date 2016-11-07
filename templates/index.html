@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title> {% block title %}{% endblock %} </title>
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/index.css') }}" />
+	</head>
+
+	<body>
+		<ul>
+			{% if 'username' in session %}
+			<li><a href="/logout">Logout</a></li>
+			<li><a {% block accountact %}{% endblock %} href="/account">Account</a></li>
+			<li><a {% block insact %}{% endblock %} href="/about">Instructions</a></li>
+			{% endif %}
+			{% if 'username' not in session %}
+			<li><a {% block loginact %}{% endblock %} href="/login">Login</a></li>
+			{% endif %}
+			<li><a {% block libact %}{% endblock %} href="/library">Library</a></li>
+			{% if 'username' not in session %}
+			<li><a {% block abact %}{% endblock %} href="/about">About</a></li>
+			{% endif %}
+			<li><a {% block homeact %}{% endblock %} href="/">Home</a></li>
+			<li style="float:left"><img src="/static/img/bluebook.png" alt="ComboChronicles" height="40" width="225"></li>
+		</ul>
+		<br>
+		<br>
+		<br>
+		{% block content %}
+
+		{% endblock %}
+
+	</body>
+
+</html>

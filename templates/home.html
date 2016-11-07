@@ -1,0 +1,98 @@
+{% extends "index.html" %}
+
+{% block homeact %}class="active"{% endblock %}
+
+{% block content %}
+	<center><h2>ComboChronicles</h2></center>
+	
+	{% if 'username' not in session %}
+		<center>
+		A platform on which you can create collaborative stories with your friends and strangers!
+		</center>
+
+
+		<table style="width:100%">
+		<tr>
+			<th style="width:65%">
+			<center>
+			<div class="">
+			<br>
+			<h3>Popular Stories</h3>
+			<hr style="width:25%">
+			{% for title,id,content,time in titles_stories %}
+			<a href = "{{url_for ('login')}}"><h3>{{title}}</h3></a>
+			{{content}} 
+			<br>
+			<br>
+			<i>Last Submission: {{time}}</i>
+			<hr>
+			{% endfor %}
+			</div>
+			</center>
+			</th>
+			<th style="width:35%; border-left: thin solid lightgray;>
+				<div class="">
+				<center>
+				<br>
+				<h3>Get started!</h3>
+				<h4>{{message}}</h4>
+				<br>
+				<form action="/login/" method="POST">
+				  <input class = "button special" type = "submit" name = "log" value = "Login">
+				  <br>
+				  <br>
+				  Don't have an account yet?
+				  <br>
+				  <br>
+				  <input class = "button special" type = "submit" name = "reg" value = "Register">
+				  <br>
+				</form>
+				</center>
+				</div>
+			</th>
+
+		</tr>
+		<br>
+		
+	{% endif %}
+
+	{% if 'username' in session %}
+		<table style="width:100%", id="frontcols">
+		<tr>
+			<th style="width:65%">
+			<center>
+			<div class = "feed_wrapper">
+			<h2>Popular Stories</h2>
+			<hr style="width:25%">
+			{% for title,id,content,time in titles_stories %}
+			<a href = "newentry/{{id}}/{{title}}"><h3>{{title}}</h3></a>
+			{{content}} 
+			<br>
+			<br>
+			<i>Last Submission: {{time}}</i>
+			<hr>
+			{% endfor %}
+			</div>
+			</center>
+				
+			</th>
+			<th style="width:35%; border-left: thin solid lightgray;">
+				<div class = "start_wrapper">
+				<center>
+					<br>
+					<h2>Start a Story</h2>
+					<h3> {{messagetop}} </h3>
+					<form action="/newstory/" method = "GET">
+					  <input type="submit" value="Begin Writing">
+					</form>
+					<br>
+					</center>
+				</div>
+			</th>
+
+		</tr>
+		<br>
+
+	{% endif %}
+		
+{% endblock %}

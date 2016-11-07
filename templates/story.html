@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+
+{% block title %}{{story}}{% endblock %}
+
+{% block content %}
+<center>
+<h3>{{story}}</h3>
+</center>
+<center>
+{% for entries in list %}
+
+
+<div class="libstory_wrapper">
+{{entries[0]}}
+</div>
+<br>
+		by <b>{{entries[1]}}</b> at <i>{{entries[2]}}</i>
+<br>
+<br>
+{% endfor %}
+</center>
+<br>
+
+{% endblock %}

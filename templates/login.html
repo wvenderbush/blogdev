@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block loginact %}class="active"{% endblock %}
+
+{% block content %}
+
+  <center><h3> Login </h3>
+  
+  <form action = "/authenticate/" method = "POST">
+    Username<br>
+    <div class="6u (xsmall)">
+    <input placeholder = "Username"class="insetinput" type="text" name="user"><br>
+    Password<br>
+    <input placeholder = "Password" type="password" name="pass"><br>
+    <input type="submit" name = "login" value = "Login">
+   
+    <br>
+  </form>
+  </div>
+
+  <hr>
+
+  <form action = "/authenticate/" method = "POST">
+  Don't have an account yet? Sign up today!
+  <br>
+  <br>
+  <div class="6u (xsmall)">
+    New User<br>
+    <input id = "name" placeholder = "Username" type="text" name="user"><br>
+    Password<br>
+    <input id = "name" placeholder = "Password" type="password" name="pass"><br>
+    <i> Password must be at least 3 characters long</i><br>
+    <input type="submit" name = "register" value = "Register">
+    
+  </form>
+   </div>
+  </center>
+
+
+{% endblock %}
+
+    

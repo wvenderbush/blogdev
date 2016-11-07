@@ -1,0 +1,75 @@
+{% extends "index.html" %}
+
+{% block title %}
+	{% if 'username' in session %}
+	About
+	{% endif %}
+
+	{% if 'username' not in session %}
+	Instructions
+	{% endif %}
+{% endblock %}
+
+{% if 'username' in session %}
+	{% block insact %}class="active"{% endblock %}
+
+{% endif %}
+
+{% if 'username' not in session %}
+	{% block abact %}class="active"{% endblock %}
+{% endif %}
+
+
+{% block content %}
+
+	{% if 'username' not in session %}
+	<center>
+	<h4>About</h4>
+	<b>Welcome to ComboChronicles</b>, 
+	<br>
+	the best collaborative story writing website on the internet!
+	<br>
+	<br>
+	Here you can work with random users to create some of the most interesting, thoughtful, and creative pieces of writing.
+	<br>
+	</center>
+
+	{% endif %}
+
+	{% if 'username' in session %}
+	<center>
+	<h4>Instructions</h4>
+	<b>Welcome to ComboChronicles</b>, 
+	<br>
+	the best collaborative story writing website on the internet!
+	<br>
+	<br>
+	Here you can work with random users to create some of the most interesting, thoughtful, and creative pieces of writing.
+	<br>
+	On the top of this page, you have access to a beautiful navigation bar with pretty self explanatory functionality. 
+	<br>
+	
+	<br>
+	<b>Home Page</b>: View the latest stories. Click on the title for a story to add a new entry. Or, if you are 
+	feeling up to it, start a new story!
+	<br>
+	<b>Library Page</b>: See all the finished stories in one page. You have an option of sorting the library either alphabetically
+	or chronologically.
+	<br>
+	<b>Begin Writing</b>: Enter a title and a line or two to start the story. Then press submit. Congratulations. 
+	<br>
+	<b>Add Entry</b>: Continue the story. 
+	<br>
+	<b>Account</b>: View all the stories you have contributed to. Change your password.
+	<br>
+	<b>Logout</b>: Click here to logout.
+
+	</center>
+
+	
+
+	{% endif %}
+
+
+
+{% endblock %}
